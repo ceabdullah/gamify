@@ -1,0 +1,23 @@
+<h1>Games</h1>
+
+<p *ngIf="!games"><em>Loading...</em></p>
+
+<a href="/create-game">+ Add Game</a>
+
+<table class='table' *ngIf="games">
+  <thead>
+    <tr>
+      <th>Game Name</th>
+      <th>Game Url</th>
+      <th>Game Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games" id="{{game.id}}">
+      <td>{{ game.gameName }}</td>
+      <td>{{ game.gameUrl }}</td>
+      <td><img src="/img/{{ game.gameImageName }}" style="width:70px;height:100px;" /></td>
+      <td><a ng-href="#" (click)="delete(game.id)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

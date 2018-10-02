@@ -1,0 +1,36 @@
+<h1>{{title}}</h1>
+<h3>Game</h3>
+<hr />
+<form [formGroup]="gameForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Game Name</label>
+    <div class="col-md-4">
+      <input class="form-control" type="text" formControlName="gameName">
+    </div>
+    <span class="text-danger" *ngIf="gameName.invalid && formDir.submitted">
+      Game Name is required.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Game Url</label>
+    <div class="col-md-4">
+      <input class="form-control" type="text" formControlName="gameUrl">
+    </div>
+    <span class="text-danger" *ngIf="gameUrl.invalid && formDir.submitted">
+      Game Url is required.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Game Image</label>
+    <div class="col-md-4">
+      <input class="form-control" type="file" (change)="onFileChange($event)" formControlName="gameImageControl">
+    </div>
+    <span class="text-danger" *ngIf="gameImageControl.invalid && formDir.submitted">
+      Game Image is required.
+    </span>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</form>
